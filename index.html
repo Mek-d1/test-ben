@@ -55,7 +55,7 @@
     }
 
     function connectWebSocket() {
-      ws = new WebSocket(`ws://${location.host}`);
+      ws = new WebSocket(`wss://${location.host}`);
       ws.onmessage = (event) => {
         const messages = document.getElementById('messages');
         messages.innerHTML += `<div>${event.data}</div>`;
