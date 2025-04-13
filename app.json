@@ -1,0 +1,15 @@
+{
+  "name": "chat-room-app",
+  "description": "Rasy chatrokm",
+  "repository": "https://github.com/yourusername/chat-room-app",
+  "env": {},
+  "scripts": {
+    "postdeploy": "echo 'App successfully deployed!'"
+  },
+  "addons": [],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
