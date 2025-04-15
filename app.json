@@ -1,0 +1,41 @@
+{
+  "name": "nothing-ben",
+  "description": "Ben bot Is a Simple WA Bot Using Library Baileys",
+  "logo": "https://files.catbox.moe/4i7dp7.jpg",
+  "keywords": ["bot", "WhatsApp", "JavaScript"],
+  "success_url": "/",
+  "stack": "heroku-24",
+  "env": {
+    "SESSION_ID": {
+      "description": "Put your SESSION_ID here.",
+      "value": ""
+    },
+    "PREFIX": {
+      "description": "Enter your desired prefix for bot. You can set `all | . | .!*`",
+      "value": "."
+    },
+    "OWNER_NUMBER": {
+      "description": "The phone numbers of the users who you want to be admin for the bot (should be in international format without + and multiple numbers must be separated by a comma like 93730285765,93744215959.... \",\").",
+      "value": "93744215959"
+    },
+    "PUBLIC": {
+      "description": "Worktype of your bot. Use public or private. If it is private, then only the bot number can use it. If public, then everyone can use it.",
+      "value": "true"
+    },
+    "ANTIBOT": {
+      "description": "Set true to Automatically deletes bot commands sent by users and warns them To Enable put true and to disable put false (e.g, true)",
+      "value": "false",
+      "required": false
+    },
+    "ANTILINK": {
+      "description": "Set true to Deletes messages containing links and warns the user To Enable put true and to disable put false (e.g, true)",
+      "value": "false",
+      "required": false
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-nodejs.git"
+    }
+  ]
+}
