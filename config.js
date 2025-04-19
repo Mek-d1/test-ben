@@ -50,10 +50,10 @@ global.prefix = process.env.PREFIX || ".";
 global.sudo_user = process.env.SUDO_USERS ? process.env.SUDO_USERS.split(",") : ["+93744215959", "93730285765"];
 global.command = process.env.ALL_CMD || "1000+";
 global.version = process.env.VERSION || "V2";
+global.autostatus_react = process.env.AUTOSTATUS_REACT === "true";
+global.autostatusemoji = process.env.AUTO_LIKE_STATUS || "💚";
 global.autosavestatus = false;
-global.AUTOSTATUS_REACT = false;
 global.autoLikeReply = false;
-global.autoLikeEmoji = "💚";
 global.welcome = false;
 global.LEVELUP = false;
 
