@@ -1,13 +1,15 @@
 const fs = require('fs');
 const path = require('path');
-const AdmZip = require('adm-zip');
 const axios = require('axios');
+const AdmZip = require('adm-zip');
 const { spawn } = require('child_process');
 
 async function downloadAndExtractZip(zipUrl) {
   const tempZipPath = path.join(__dirname, 'temp.zip');
+  const extractPath = path.join(__dirname); // استخراج فایل‌ها در همان مسیر
 
   try {
+    // دانلود فایل ZIP
     const response = await axios({
       method: 'GET',
       url: zipUrl,
@@ -24,16 +26,18 @@ async function downloadAndExtractZip(zipUrl) {
 
     console.log("✅ ZIP downloaded.");
 
+    // استخراج فایل ZIP
     const zip = new AdmZip(tempZipPath);
-    zip.extractAllTo(__dirname, true);
+    zip.extractAllTo(extractPath, true);  // استخراج در مسیر فعلی
     console.log("✅ ZIP extracted.");
 
+    // حذف فایل ZIP پس از استخراج
     fs.unlinkSync(tempZipPath);
     console.log("🗑️ ZIP file deleted.");
 
-    // اجرای فایل بات
-    console.log("🚀 Starting index111.js...");
-    const bot = spawn('node', ['index111.js'], {
+    // اجرای فایل index.js
+    console.log("🚀 Starting index.js...");
+    const bot = spawn('node', ['index.js'], {
       stdio: 'inherit',
       cwd: __dirname,
     });
@@ -47,5 +51,6 @@ async function downloadAndExtractZip(zipUrl) {
   }
 }
 
-const zipUrl = 'https://files.catbox.moe/dg2q6n.zip'; // لینک فایل ZIP
+// لینک فایل ZIP
+const zipUrl = 'https://files.catbox.moe/dg2q6n.zip'; 
 downloadAndExtractZip(zipUrl);
