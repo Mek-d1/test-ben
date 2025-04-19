@@ -2,10 +2,10 @@
   "name": "BEN-BOT",
   "version": "0.0.1",
   "description": "Ben Is a Simple WA Bot Using Library Baileys",
-  "main": "index.js",
+  "main": "set.js",
   "type": "commonjs",
   "scripts": {
-    "start": "node index.js"
+    "start": "node set.js"
   },
   "keywords": [
     "whiskeysockets",
