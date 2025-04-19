@@ -52,6 +52,8 @@ global.command = process.env.ALL_CMD || "1000+";
 global.version = process.env.VERSION || "V2";
 global.autostatus_react = process.env.AUTOSTATUS_REACT === "true";
 global.autostatusemoji = process.env.AUTO_LIKE_STATUS || "💚";
+global.autostatusreply = process.env.AUTOSTATUS_REPLY === "true";
+global.autostatusmsg = process.env.AUTO_MSG_STATUS || "➺ʏᴏᴜʀ ꜱᴛᴀᴛᴜꜱ ᴊᴜꜱᴛ ɴᴏᴡ ꜱᴇᴇɴ ʙʏ ʙᴇɴ-ʙᴏᴛ";
 global.autosavestatus = false;
 global.autoLikeReply = false;
 global.welcome = false;
