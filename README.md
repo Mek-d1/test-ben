@@ -34,22 +34,8 @@
 - **ALL MENU UPDATED 🚀**
 - **AI,SEARCH MENU 🚀**
 - **ANTILINK 🚀**
-- **AUTOUPDATE 🚀**
-- **ANTILINKREMOVE 🚀**
 - **ANTILINKWARN 🚀**
 - **ANTIBOT 🚀**
-- **ANTIBOTREMOVE 🚀**
-- **ANTIBOTWARN 🚀**
-- **ANTIBAD 🚀**
-- **ANTIBADREMOVE 🚀**
-- **ANTIBADWARN 🚀**
-- **AUTOREPLY 🚀**
-- **AUTOREPLYPR 🚀**
-- **AUTOREPLYGC 🚀**
-- **ANTIFORWARD 🚀**
-- **ANTIFORWARDPR 🚀**
-- **VV 🚀**
-- **UPDATE 🚀**
 - © ***POWERD BY NOTHING***
 
 ---------
@@ -92,20 +78,30 @@
     
 
 ### 𝘿𝙀𝙋𝙇𝙊𝙔𝙈𝙀𝙉𝙏 𝙊𝙋𝙏𝙄𝙊𝙉𝙎
-</div>
-<div align="center">
-    <a href="https://dashboard.heroku.com/new-app?template=https://github.com/NOTHING-MD420/Ben-bot">
-        <img height="30" title="Heroku" src="https://img.shields.io/badge/𝗛𝗘𝗥𝗢𝗞𝗨-9966CC?style=for-the-badge&logo=render">
-    </a>
-    <a href="https://dashboard.heroku.com/new-app?template=https://github.com/NOTHING-MD420/Ben-bot">
-        <img height="30" title="Heroku" src="https://img.shields.io/badge/𝗛𝗘𝗥𝗢𝗞𝗨-9966CC?style=for-the-badge&logo=render">
-    </a>
-    <a href="https://dashboard.heroku.com/new-app?template=https://github.com/NOTHING-MD420/Ben-bot">
-        <img height="30" title="Heroku" src="https://img.shields.io/badge/𝗛𝗘𝗥𝗢𝗞𝗨-9966CC?style=for-the-badge&logo=render">
-    </a>
-</div>
-    <a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
-    <a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
+
+> Deploy on Heroku
+
+
+
+<p align="left">  
+<a href='https://dashboard.heroku.com/new?template=https://github.com/NOTHING-MD420/Ben-bot/tree/main' target="_blank"><img alt='Deploy on Heroku' src='https://img.shields.io/badge/Deploy%20on-Heroku-FF004D?style=for-the-badge&logo=heroku&logoColor=white'/></a>  
+</p>
+
+> Deploy on TalkDrove
+
+
+
+<p align="left">  
+<a href='https://host.talkdrove.com/share-bot/15' target="_blank"><img alt='Deploy on TaikDrove' src='https://img.shields.io/badge/Deploy%20on-TaikDrove-6971FF?style=for-the-badge&logo=google-cloud&logoColor=white'/></a>  
+</p>
+
+> Deploy on Koyeb
+
+
+
+<p align="left">  
+<a href='https://app.koyeb.com/services/deploy?type=git&repository=NOTHING-MD420/Ben-bot&ports=3000' target="_blank"><img alt='Deploy on Koyeb' src='https://img.shields.io/badge/Deploy%20on-Koyeb-FF009D?style=for-the-badge&logo=koyeb&logoColor=white'/></a>  
+</p>
 
 ### <br>    ❖ CREATE ACCOUNT HOST.TALKDROVE WEB ❖
 
@@ -115,14 +111,6 @@
 
    <a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
    <a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
-
-### <br>    ❖  FREE DEPLOY HOST.TALKDROVE BOT ❖
-
-<p align="center">
-<a href="https://host.talkdrove.com/share-bot/15"><img height= "35" title="Author" src="https://img.shields.io/badge/DEPLOY H.TALKDROVE-blue?style=for-the-badge&logo=render"></a>
-<p/> 
-    <a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
-    <a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
     
 ### 🟢 𝙎𝙐𝙋𝙋𝙊𝙍𝙏 𝙂𝙍𝙊𝙐𝙋 𝙇𝙄𝙉𝙆 🟢
 
