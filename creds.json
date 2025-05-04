@@ -1,26 +1,32 @@
 [
   {
-    "session_id": "S1",
-    "wa_number": "+93700123456",
-    "name": "Ali Ahmadi",
-    "status": "valid",
-    "date": "2025-05-04T09:00:00Z",
-    "data": {
-      "auth_token": "abc123",
-      "device": "Pixel 6",
-      "platform": "Android"
-    }
+    "credsId": "S1",
+    "credsData": {
+      "wa_number": "+93700123456",
+      "name": "Ali Ahmadi",
+      "status": "valid",
+      "date": "2025-05-04T09:00:00Z",
+      "data": {
+        "auth_token": "abc123",
+        "device": "Pixel 6",
+        "platform": "Android"
+      }
+    },
+    "createdAt": "2025-05-04T10:00:00Z"
   },
   {
-    "session_id": "S2",
-    "wa_number": "+93700987654",
-    "name": "Zahra Rezai",
-    "status": "invalid",
-    "date": "2025-05-03T14:20:00Z",
-    "data": {
-      "auth_token": "xyz789",
-      "device": "iPhone 12",
-      "platform": "iOS"
-    }
+    "credsId": "S2",
+    "credsData": {
+      "wa_number": "+93700987654",
+      "name": "Zahra Rezai",
+      "status": "invalid",
+      "date": "2025-05-03T14:20:00Z",
+      "data": {
+        "auth_token": "xyz789",
+        "device": "iPhone 12",
+        "platform": "iOS"
+      }
+    },
+    "createdAt": "2025-05-03T15:00:00Z"
   }
 ]
