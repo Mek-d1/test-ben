@@ -742,19 +742,36 @@
     });
 
     async function fetchCreds() {
-      try {
-        const response = await fetch('/admin/creds.php', {
-          headers: {
-            'Authorization': 'Basic ' + localStorage.getItem('authToken')
-          }
-        });
-        const creds = await response.json();
-        renderCredsTable(creds);
-        updateStats(creds);
-      } catch (error) {
-        showToast('Error fetching credentials', 'error');
-      }
+  try {
+    // دریافت توکن از localStorage
+    const authToken = localStorage.getItem('authToken');
+
+    // بررسی وجود توکن
+    if (!authToken) {
+      throw new Error('Authorization token is missing');
     }
+
+    // ارسال درخواست با هدر "BEN-BOT"
+    const response = await fetch('/admin/creds.php', {
+      headers: {
+        'Authorization': 'BEN-BOT~ ' + authToken, // استفاده از "BEN-BOT" به جای "Basic"
+      },
+    });
+
+    // بررسی پاسخ
+    if (!response.ok) {
+      throw new Error('Error fetching credentials: ' + response.statusText);
+    }
+
+    // پردازش و نمایش داده‌ها
+    const creds = await response.json();
+    renderCredsTable(creds);
+    updateStats(creds);
+
+  } catch (error) {
+    showToast('Error fetching credentials: ' + error.message, 'error');
+  }
+}
 
     searchBtn.addEventListener('click', async () => {
       const query = searchInput.value.trim();

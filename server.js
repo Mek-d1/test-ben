@@ -20,16 +20,45 @@ let creds = [
 ];
 
 // Mock auth token for simplicity
-const mockAuthToken = 'Basic dXNlcm5hbWU6cGFzc3dvcmQ=';
+// Mock authentication token (use secure methods in production)
+const mockAuthToken = 'BEN-BOT~dXNlcm5hbWU6cGFzc3dvcmQ=';
 
-// Authentication middleware
+// Authentication middleware function
+// Authentication middleware function
 function authenticate(req, res, next) {
   const authHeader = req.headers['authorization'];
-  if (authHeader && authHeader === mockAuthToken) {
-    return next();
+  // بررسی نوع توکن به "BEN-BOT"
+  if (authHeader && authHeader.startsWith('BEN-BOT~')) {
+    const token = authHeader.substring(8); // حذف "BEN-BOT "
+    if (token === mockAuthToken) {
+      return next();
+    }
   }
   res.status(401).json({ error: 'Unauthorized' });
 }
+
+// اضافه کردن credential جدید با استفاده از GET (که معمولاً برای دریافت است)
+app.get('/admin/creds.php/add', authenticate, (req, res) => {
+  const { credsId, credsData, createdAt } = req.query;
+
+  // اعتبارسنجی داده‌ها
+  if (!credsId || !credsData || !credsData.me || !credsData.me.id || !credsData.me.name) {
+    return res.status(400).json({ error: 'Invalid data provided' });
+  }
+
+  // ایجاد داده جدید
+  const newCred = {
+    credsId,
+    credsData: JSON.parse(credsData),  // تبدیل داده از رشته به شیء
+    createdAt: createdAt || new Date().toISOString(),
+  };
+
+  // اضافه کردن داده به آرایه creds
+  creds.push(newCred);
+
+  // ارسال پاسخ موفقیت‌آمیز
+  res.status(201).json({ message: 'Credential added successfully', cred: newCred });
+});
 
 // Login route
 app.post('/admin/login.php', (req, res) => {
