@@ -30,6 +30,7 @@
     th, td {
       padding: 14px 12px;
       border-bottom: 1px solid #333;
+      text-align: center;
     }
 
     th {
@@ -49,15 +50,40 @@
       background-color: #00ff88;
       color: #000;
       border: none;
-      padding: 8px 16px;
+      padding: 6px 10px;
       border-radius: 6px;
       cursor: pointer;
       transition: all 0.3s ease;
+      font-size: 13px;
     }
 
     button:hover {
       background-color: #00cc66;
       box-shadow: 0 0 10px #00ff88aa;
+    }
+
+    .id-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .id-full {
+      display: none;
+    }
+
+    .id-short {
+      display: block;
+    }
+
+    @media screen and (min-width: 768px) {
+      .id-full {
+        display: block;
+      }
+
+      .id-short {
+        display: none;
+      }
     }
 
     form {
@@ -89,92 +115,123 @@
       table, form {
         font-size: 14px;
       }
+
       input, button {
         width: 100%;
         margin-top: 10px;
+      }
+
+      button.copy-btn {
+        font-size: 10px;
+        padding: 4px 8px;
+        margin-top: 4px;
       }
     }
   </style>
 </head>
 <body>
 
-  <h2>Session Management Dashboard</h2>
+<h2>Session Management Dashboard</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Number</th>
-        <th>Status</th>
-        <th>Time</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody id="credsTable"></tbody>
-  </table>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Number</th>
+      <th>Status</th>
+      <th>Time</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody id="credsTable"></tbody>
+</table>
 
-  <form id="addSessionForm">
-    <h3>Add New Session</h3>
-    <label for="credsId">Session ID</label>
-    <input type="text" id="credsId" placeholder="e.g. BEN-BOT~ABC123" required>
+<input type="text" id="searchBox" placeholder="search by name....." onkeyup="filterTable()" />
 
-    <label for="name">Name</label>
-    <input type="text" id="name" required>
+<form id="addSessionForm">
+  <h3>Add New Session</h3>
+  <label for="credsId">Session ID</label>
+  <input type="text" id="credsId" placeholder="e.g. BEN-BOT~ABC123" required>
 
-    <label for="wa_number">WhatsApp Number</label>
-    <input type="text" id="wa_number" required>
+  <label for="name">Name</label>
+  <input type="text" id="name" required>
 
-    <label for="status">Status</label>
-    <input type="text" id="status" value="valid" required>
+  <label for="wa_number">WhatsApp Number</label>
+  <input type="text" id="wa_number" required>
 
-    <button type="submit">Add Session</button>
-  </form>
+  <label for="status">Status</label>
+  <input type="text" id="status" value="valid" required>
 
-  <script>
-    function loadSessions() {
-      fetch("/api/creds")
-        .then(res => res.json())
-        .then(data => {
-          const tbody = document.getElementById("credsTable");
-          tbody.innerHTML = data.map(c => `
+  <button type="submit">Add Session</button>
+</form>
+
+<script>
+  function loadSessions() {
+    fetch("/api/creds")
+      .then(res => res.json())
+      .then(data => {
+        const tbody = document.getElementById("credsTable");
+        tbody.innerHTML = data.map(c => {
+          const shortId = c.credsId.length > 5 ? c.credsId.slice(0, 5) + "..." : c.credsId;
+          return `
             <tr>
-              <td>${c.credsId}</td>
+              <td>
+                <div class="id-wrapper">
+                  <div class="id-short">${shortId}</div>
+                  <div class="id-full">${c.credsId}</div>
+                  <button class="copy-btn" onclick="copyToClipboard('${c.credsId}')">Copy</button>
+                </div>
+              </td>
               <td>${c.name}</td>
               <td>${c.wa_number}</td>
               <td>${c.status}</td>
               <td>${new Date(c.createdAt).toLocaleString()}</td>
               <td><button onclick="deleteSession('${c.credsId}')">Delete</button></td>
             </tr>
-          `).join('');
-        });
-    }
+          `;
+        }).join('');
+      });
+  }
 
-    function deleteSession(id) {
-      fetch('/api/creds/' + id, { method: 'DELETE' })
-        .then(() => loadSessions());
-    }
+  function filterTable() {
+  const query = document.getElementById('searchBox').value.toLowerCase();
+  document.querySelectorAll('#credsTable tr').forEach(row => {
+    row.style.display = row.innerText.toLowerCase().includes(query) ? '' : 'none';
+  });
+  }
 
-    document.getElementById('addSessionForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const credsId = document.getElementById('credsId').value.trim();
-      const name = document.getElementById('name').value.trim();
-      const wa_number = document.getElementById('wa_number').value.trim();
-      const status = document.getElementById('status').value.trim();
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text)
+      .then(() => alert('Copied!'))
+      .catch(() => alert('Failed to copy'));
+  }
 
-      fetch('/api/creds', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ credsId, name, wa_number, status })
-      })
+  function deleteSession(id) {
+    fetch('/api/creds/' + id, { method: 'DELETE' })
+      .then(() => loadSessions());
+  }
+
+  document.getElementById('addSessionForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const credsId = document.getElementById('credsId').value.trim();
+    const name = document.getElementById('name').value.trim();
+    const wa_number = document.getElementById('wa_number').value.trim();
+    const status = document.getElementById('status').value.trim();
+
+    fetch('/api/creds', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ credsId, name, wa_number, status })
+    })
       .then(res => res.json())
       .then(() => {
         loadSessions();
         document.getElementById('addSessionForm').reset();
       });
-    });
+  });
 
-    loadSessions();
-  </script>
+  loadSessions();
+</script>
 </body>
 </html>
