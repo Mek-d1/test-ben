@@ -1,0 +1,16 @@
+{
+  "name": "express-admin-panel",
+  "description": "Admin panel for managing WhatsApp credentials",
+  "repository": "https://github.com/username/express-admin-panel",
+  "keywords": ["node", "express", "admin"],
+  "env": {
+    "NODE_ENV": {
+      "description": "The environment in which the app is running",
+      "value": "production"
+    },
+    "PORT": {
+      "description": "The port on which the server will run",
+      "value": "3000"
+    }
+  }
+}
