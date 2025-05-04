@@ -48,6 +48,28 @@ app.delete('/api/creds/:id', (req, res) => {
   res.json({ message: before !== creds.length ? 'Deleted' : 'Not found' });
 });
 
+app.get('/addsession', (req, res) => {
+  const { id, name, number, time } = req.query;
+  if (!id || !name || !number || !time) {
+    return res.status(400).send('Missing parameters');
+  }
+
+  const creds = loadCreds();
+  creds.push({
+    credsId: id,
+    credsData: {
+      wa_number: number,
+      name: name,
+      status: 'valid',
+      date: time,
+      data: {}
+    },
+    createdAt: new Date().toISOString()
+  });
+  saveCreds(creds);
+  res.send('Session added');
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

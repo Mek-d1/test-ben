@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #f9f9f9; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+    th { background: #eee; }
+    button { padding: 5px 10px; margin: 0 5px; }
+  </style>
+</head>
+<body>
+  <h2>Session List</h2>
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Name</th><th>Number</th><th>Time</th><th>Action</th></tr>
+    </thead>
+    <tbody id="credsTable"></tbody>
+  </table>
+
+  <script>
+    fetch("/api/creds")
+      .then(res => res.json())
+      .then(data => {
+        const tbody = document.getElementById("credsTable");
+        tbody.innerHTML = data.map(c => `
+          <tr>
+            <td>${c.credsId}</td>
+            <td>${c.credsData.name}</td>
+            <td>${c.credsData.wa_number}</td>
+            <td>${c.credsData.date}</td>
+            <td><button onclick="deleteSession('${c.credsId}')">Delete</button></td>
+          </tr>
+        `).join('');
+      });
+
+    function deleteSession(id) {
+      fetch('/api/creds/' + id, { method: 'DELETE' })
+        .then(() => location.reload());
+    }
+  </script>
+</body>
+</html>
