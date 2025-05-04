@@ -5,10 +5,11 @@ require('dotenv').config();
 const ADMIN_USER = process.env.ADMIN_USER;
 const ADMIN_PASS = process.env.ADMIN_PASS;
 const PORT = process.env.PORT || 3000;
+const path = require('path');
 
-app.use('/',async (req, res, next) => {
-res.sendFile(__path + '/index.html')
-})
+app.use('/', async (req, res, next) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
