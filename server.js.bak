@@ -36,14 +36,23 @@ app.get('/api/creds', (req, res) => {
 });
 
 // API: افزودن
+// API: افزودن
 app.post('/api/creds', (req, res) => {
-  const { credsId, credsData } = req.body;
-  if (!credsId || !credsData) return res.status(400).json({ error: 'Invalid data' });
+  const { credsId, name, wa_number, status } = req.body;
+  if (!credsId || !name || !wa_number || !status) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
 
   const creds = loadCreds();
-  creds.push({ credsId, credsData, createdAt: new Date().toISOString() });
+  creds.push({
+    credsId,
+    name,
+    wa_number,
+    status,
+    createdAt: new Date().toISOString()
+  });
   saveCreds(creds);
-  res.json({ message: 'Added' });
+  res.json({ message: 'Session added' });
 });
 
 // API: حذف

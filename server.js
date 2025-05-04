@@ -9,13 +9,13 @@ const credsPath = path.join(__dirname, 'creds.json');
 app.use(express.static(__dirname));
 app.use(bodyParser.json());
 
-app.use('/',async (req, res, next) => {
-res.sendFile(__path + '/index.html')
-})
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
-app.use('/valid',async (req, res, next) => {
-res.sendFile(__path + '/valid.html')
-})
+app.get('/valid', (req, res) => {
+  res.sendFile(path.join(__dirname, 'valid.html'));
+});
 // Helper: Load & Save
 function loadCreds() {
   try {
