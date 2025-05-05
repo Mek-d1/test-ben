@@ -86,8 +86,8 @@ app.get('/addsession', (req, res) => {
 app.post('/giftedValidate.php', (req, res) => {
     const sessionId = req.body.sessionId?.trim();
 
-    if (!sessionId || !sessionId.startsWith("BEN-BOT~")) {
-        return res.json({ error: 'Invalid format. Must start with BEN-BOT~' });
+    if (!sessionId || !sessionId.startsWith("XBOT-MD~")) {
+        return res.json({ error: 'Invalid format. Must start with XBOT-MD~' });
     }
 
     const credsPath = path.join(__dirname, 'creds.json');
