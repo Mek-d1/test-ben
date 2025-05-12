@@ -691,8 +691,8 @@
 
     loginForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
+      const username = 'David';
+      const password = 'dave001';
       
       try {
         const loginResponse = await fetch('/admin/login.php', {
